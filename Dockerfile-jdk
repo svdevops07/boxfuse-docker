@@ -1,0 +1,8 @@
+FROM bellsoft-liberica-jdk-on-ubuntu-8u302-11-0-12
+RUN apt -y update && apt install -y tomcat9 maven git && \
+    git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git && \
+    cd boxfuse-sample-java-war-hello && \
+    mvn package && \
+    cd target && \
+    cp hello-1.0.war /var/lib/tomcat9/webapps/ \
+EXPOSE 8080
