@@ -1,5 +1,5 @@
-FROM bellsoft-liberica-jdk-on-ubuntu-8u302-11-0-12
-RUN apt -y update && apt install -y tomcat9 maven git && \
+FROM ubuntu:18.04
+RUN apt -y update && apt install -y default-jdk tomcat9 maven git && \
     git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git && \
     cd boxfuse-sample-java-war-hello && \
     mvn package && \
