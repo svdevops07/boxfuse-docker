@@ -1,0 +1,12 @@
+version: ''
+services:
+  build_service:
+    build:
+      context: ./java_app
+    ports:
+      - 8080:8080
+    volumes:
+      - /var:/var/java_app/apache-tomcat-10.0.20/webapps
+
+  prod_service:
+    image: ubuntu:18.04
