@@ -14,6 +14,10 @@ docker run -d -p 7776:8080 boxfuse-ubuntu:0.1
 # Run on tomcat
 docker build -f Dockerfile-tomcat -t boxfuse-tomcat:0.2 .
 docker run -d -p 7777:8080 boxfuse-tomcat:0.2
+
+# Run multistage
+docker build -f Dockerfile-multistage -t boxfuse-multi:0.4 .
+docker run -d -p 7779:8080 boxfuse-multi:0.4
 ```
 
 ## Resource
