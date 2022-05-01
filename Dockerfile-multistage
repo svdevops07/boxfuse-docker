@@ -1,11 +1,16 @@
-FROM tomcat
-WORKDIR /app
-RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+FROM maven:3.6.3-jdk-11 AS BUILDER
+WORKDIR /usr/share/maven
+RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git \
+    && mv boxfuse-sample-java-war-hello/* /usr/share/maven
+RUN mvn package
+#FROM maven:3.6.3-jdk-11
 
-FROM maven:3.6.3-jdk-11
-WORKDIR /app/boxfuse-sample-java-war-hello/
-RUN mvn clean package
-CMD ["java", "-jar", "target/*.jar"]
+#WORKDIR /app/boxfuse-sample-java-war-hello/
+#RUN mvn clean package
+#CMD ["java", "-jar", "target/*.jar"]
 
 #RUN    mvn package && \
 #       cp target/hello-1.0.war /var/lib/tomcat9/webapps/
+
+FROM tomcat
+COPY --from=BUILDER /usr/share/maven/boxfuse-sample-java-war-hello/target/*.war /webapps
