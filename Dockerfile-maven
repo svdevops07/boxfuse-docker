@@ -1,9 +1,5 @@
-FROM maven
-#RUN apt update && apt install -y git
-RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-RUN cd boxfuse-sample-java-war-hello
-RUN pwd && ls /usr/share/maven
-RUN cp boxfuse-sample-java-war-hello/pom.xml / \
-    && mvn package \
-    && cd target \
-    && cp hello-1.0.war /usr/share/maven
+FROM maven:3.6.3-jdk-11
+WORKDIR /usr/share/maven
+RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git \
+    && mv boxfuse-sample-java-war-hello/* /usr/share/maven
+RUN mvn package
