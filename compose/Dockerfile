@@ -2,4 +2,4 @@ FROM maven:3.6.3-jdk-11
 WORKDIR /usr/share/maven
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git \
     && mv boxfuse-sample-java-war-hello/* /usr/share/maven
-RUN mvn package
+CMD mvn package
