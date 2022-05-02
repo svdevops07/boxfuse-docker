@@ -4,9 +4,9 @@ services:
     build: .
     container_name: maven_build
     volumes:
-      - db:/usr/share/maven/target
-    networks:
-      - boxfusenet
+      - db:/usr/share/maven
+#    networks:
+#      - boxfusenet
 
   prod_service:
     image: tomcat
@@ -24,6 +24,6 @@ services:
 volumes:
   db:
 
-networks:
-  boxfusenet:
-    driver: bridge
+#networks:
+#  boxfusenet:
+#    driver: bridge
