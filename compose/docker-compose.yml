@@ -12,7 +12,8 @@ services:
     image: tomcat
     container_name: tomcat_prod
     depends_on:
-      - build_service
+      build_service:
+        condition: service_healthy
     ports:
       - "7776:8080"
     volumes:
