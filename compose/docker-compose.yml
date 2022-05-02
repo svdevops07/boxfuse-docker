@@ -4,7 +4,7 @@ services:
     build: .
     container_name: maven_build
     volumes:
-      - db:/usr/share/maven
+      - db:/usr/share/maven/target
 #    networks:
 #      - boxfusenet
 
@@ -12,14 +12,14 @@ services:
     image: tomcat
     container_name: tomcat_prod
     depends_on:
-      build_service:
-        condition: service_healthy
+      - build_service
+#        condition: service_healthy
     ports:
       - "7776:8080"
     volumes:
       - db:/usr/local/tomcat/webapps
-    networks:
-      - boxfusenet
+#    networks:
+#      - boxfusenet
 
 volumes:
   db:
