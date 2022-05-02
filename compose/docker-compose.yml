@@ -11,6 +11,8 @@ services:
   prod_service:
     image: tomcat
     container_name: tomcat_prod
+    depends_on:
+      - build_service
     ports:
       - "7776:8080"
     volumes:
