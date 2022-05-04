@@ -1,5 +1,5 @@
 # boxfuse-docker
-task for lection 6. Boxfuse in Java
+tasks for lections 6 and 7. Java Boxfuse with docker and docker-compose
 ## How to run
 
 ```
